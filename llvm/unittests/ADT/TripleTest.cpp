@@ -278,6 +278,18 @@ TEST(TripleTest, ParsedIDs) {
   EXPECT_EQ(Triple::UnknownOS, T.getOS());
   EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
 
+  T = Triple("urisc-unknown-unknown");
+  EXPECT_EQ(Triple::urisc, T.getArch());
+  EXPECT_EQ(Triple::UnknownVendor, T.getVendor());
+  EXPECT_EQ(Triple::UnknownOS, T.getOS());
+  EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
+  
+  T = Triple("urisc");
+  EXPECT_EQ(Triple::urisc, T.getArch());
+  EXPECT_EQ(Triple::UnknownVendor, T.getVendor());
+  EXPECT_EQ(Triple::UnknownOS, T.getOS());
+  EXPECT_EQ(Triple::UnknownEnvironment, T.getEnvironment());
+  
   T = Triple("lanai-unknown-unknown");
   EXPECT_EQ(Triple::lanai, T.getArch());
   EXPECT_EQ(Triple::UnknownVendor, T.getVendor());
@@ -906,6 +918,11 @@ TEST(TripleTest, BitWidthPredicates) {
   EXPECT_TRUE(T.isArch64Bit());
   EXPECT_TRUE(T.isRISCV());
 
+  T.setArch(Triple::urisc);          // urisc
+  EXPECT_TRUE(T.isArch16Bit());
+  EXPECT_FALSE(T.isArch32Bit());
+  EXPECT_FALSE(T.isArch64Bit());
+ 
   T.setArch(Triple::csky);
   EXPECT_FALSE(T.isArch16Bit());
   EXPECT_TRUE(T.isArch32Bit());
