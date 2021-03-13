@@ -317,6 +317,7 @@ enum {
   EM_BPF = 247,           // Linux kernel bpf virtual machine
   EM_VE = 251,            // NEC SX-Aurora VE
   EM_CSKY = 252,          // C-SKY 32-bit processor
+  EM_URISC = 253,         // u-RISC Processor (16-Bit)
 };
 
 // Object file classes.
@@ -512,7 +513,7 @@ enum : unsigned {
   EF_MIPS_ABI = 0x0000f000,        // Mask for selecting EF_MIPS_ABI_ variant.
 
   // MIPS machine variant
-  EF_MIPS_MACH_NONE = 0x00000000,    // A standard MIPS implementation.
+  EF_MIPS_MACH_NONE = 0x00000000,    // A standard MIPS implementation.elf file format explained
   EF_MIPS_MACH_3900 = 0x00810000,    // Toshiba R3900
   EF_MIPS_MACH_4010 = 0x00820000,    // LSI R4010
   EF_MIPS_MACH_4100 = 0x00830000,    // NEC VR4100
@@ -783,6 +784,11 @@ enum : unsigned {
 // ELF Relocation types for MSP430
 enum {
 #include "ELFRelocs/MSP430.def"
+};
+
+// ELF Relocation types for u-RISC
+enum {
+#include "ELFRelocs/URISC.def"
 };
 
 // ELF Relocation type for VE.
